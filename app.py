@@ -140,7 +140,7 @@ tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 
 # Model Loads:
 
-model = GPT2LMHeadModel(gpt2_medium_config)
+model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
 model.load_state_dict(torch.load("medium_ft.pkl"), strict=False)
 
 device = torch.device("cuda")
