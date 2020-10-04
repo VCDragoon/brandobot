@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/solar_sys.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+      <!-- <script src="{{ url_for('static', filename='js/planets.js') }}"></script> -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script>
+      <title>BrandoBot</title>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   </head>
+   <header>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+       <a class="navbar-brand" href="/">
+       <img src="/static/img/small_logo-removebg-preview.png" class="logo" width="30" height="30"/>
+       BrandoBot
+       </a>
+       <div id="planet_controls">
+        <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
+        <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
+       </div>
+    </nav>
+ </header>
+ <style>
+   .glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #49FC00;
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #b300fc;
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+@-webkit-keyframes glitch-anim {
+  0% {
+    clip: rect(86px, 9999px, 30px, 0);
+  }
+  4.166666666666666% {
+    clip: rect(55px, 9999px, 86px, 0);
+  }
+  8.333333333333332% {
+    clip: rect(65px, 9999px, 137px, 0);
+  }
+  12.5% {
+    clip: rect(48px, 9999px, 46px, 0);
+  }
+  16.666666666666664% {
+    clip: rect(59px, 9999px, 33px, 0);
+  }
+  20.833333333333336% {
+    clip: rect(106px, 9999px, 74px, 0);
+  }
+  25% {
+    clip: rect(109px, 9999px, 72px, 0);
+  }
+  29.166666666666668% {
+    clip: rect(53px, 9999px, 40px, 0);
+  }
+  33.33333333333333% {
+    clip: rect(99px, 9999px, 126px, 0);
+  }
+  37.5% {
+    clip: rect(94px, 9999px, 20px, 0);
+  }
+  41.66666666666667% {
+    clip: rect(140px, 9999px, 89px, 0);
+  }
+  45.83333333333333% {
+    clip: rect(60px, 9999px, 14px, 0);
+  }
+  50% {
+    clip: rect(103px, 9999px, 66px, 0);
+  }
+  54.166666666666664% {
+    clip: rect(16px, 9999px, 109px, 0);
+  }
+  58.333333333333336% {
+    clip: rect(102px, 9999px, 120px, 0);
+  }
+  62.5% {
+    clip: rect(12px, 9999px, 4px, 0);
+  }
+  66.66666666666666% {
+    clip: rect(19px, 9999px, 14px, 0);
+  }
+  70.83333333333334% {
+    clip: rect(145px, 9999px, 148px, 0);
+  }
+  75% {
+    clip: rect(94px, 9999px, 60px, 0);
+  }
+  79.16666666666666% {
+    clip: rect(29px, 9999px, 86px, 0);
+  }
+  83.33333333333334% {
+    clip: rect(60px, 9999px, 88px, 0);
+  }
+  87.5% {
+    clip: rect(30px, 9999px, 49px, 0);
+  }
+  91.66666666666666% {
+    clip: rect(143px, 9999px, 14px, 0);
+  }
+  95.83333333333334% {
+    clip: rect(64px, 9999px, 87px, 0);
+  }
+  100% {
+    clip: rect(42px, 9999px, 109px, 0);
+  }
+}
+@keyframes glitch-anim {
+  0% {
+    clip: rect(86px, 9999px, 30px, 0);
+  }
+  4.166666666666666% {
+    clip: rect(55px, 9999px, 86px, 0);
+  }
+  8.333333333333332% {
+    clip: rect(65px, 9999px, 137px, 0);
+  }
+  12.5% {
+    clip: rect(48px, 9999px, 46px, 0);
+  }
+  16.666666666666664% {
+    clip: rect(59px, 9999px, 33px, 0);
+  }
+  20.833333333333336% {
+    clip: rect(106px, 9999px, 74px, 0);
+  }
+  25% {
+    clip: rect(109px, 9999px, 72px, 0);
+  }
+  29.166666666666668% {
+    clip: rect(53px, 9999px, 40px, 0);
+  }
+  33.33333333333333% {
+    clip: rect(99px, 9999px, 126px, 0);
+  }
+  37.5% {
+    clip: rect(94px, 9999px, 20px, 0);
+  }
+  41.66666666666667% {
+    clip: rect(140px, 9999px, 89px, 0);
+  }
+  45.83333333333333% {
+    clip: rect(60px, 9999px, 14px, 0);
+  }
+  50% {
+    clip: rect(103px, 9999px, 66px, 0);
+  }
+  54.166666666666664% {
+    clip: rect(16px, 9999px, 109px, 0);
+  }
+  58.333333333333336% {
+    clip: rect(102px, 9999px, 120px, 0);
+  }
+  62.5% {
+    clip: rect(12px, 9999px, 4px, 0);
+  }
+  66.66666666666666% {
+    clip: rect(19px, 9999px, 14px, 0);
+  }
+  70.83333333333334% {
+    clip: rect(145px, 9999px, 148px, 0);
+  }
+  75% {
+    clip: rect(94px, 9999px, 60px, 0);
+  }
+  79.16666666666666% {
+    clip: rect(29px, 9999px, 86px, 0);
+  }
+  83.33333333333334% {
+    clip: rect(60px, 9999px, 88px, 0);
+  }
+  87.5% {
+    clip: rect(30px, 9999px, 49px, 0);
+  }
+  91.66666666666666% {
+    clip: rect(143px, 9999px, 14px, 0);
+  }
+  95.83333333333334% {
+    clip: rect(64px, 9999px, 87px, 0);
+  }
+  100% {
+    clip: rect(42px, 9999px, 109px, 0);
+  }
+}
+@-webkit-keyframes glitch-anim-2 {
+  6.666666666666667% {
+    clip: rect(86px, 9999px, 122px, 0);
+  }
+  10% {
+    clip: rect(95px, 9999px, 147px, 0);
+  }
+  13.333333333333334% {
+    clip: rect(96px, 9999px, 80px, 0);
+  }
+  16.666666666666664% {
+    clip: rect(149px, 9999px, 129px, 0);
+  }
+  20% {
+    clip: rect(41px, 9999px, 30px, 0);
+  }
+  23.333333333333332% {
+    clip: rect(80px, 9999px, 1px, 0);
+  }
+  26.666666666666668% {
+    clip: rect(26px, 9999px, 42px, 0);
+  }
+  30% {
+    clip: rect(99px, 9999px, 132px, 0);
+  }
+  33.33333333333333% {
+    clip: rect(6px, 9999px, 61px, 0);
+  }
+  36.666666666666664% {
+    clip: rect(83px, 9999px, 58px, 0);
+  }
+  40% {
+    clip: rect(87px, 9999px, 116px, 0);
+  }
+  43.333333333333336% {
+    clip: rect(119px, 9999px, 29px, 0);
+  }
+  46.666666666666664% {
+    clip: rect(41px, 9999px, 9px, 0);
+  }
+  50% {
+    clip: rect(121px, 9999px, 144px, 0);
+  }
+  53.333333333333336% {
+    clip: rect(12px, 9999px, 132px, 0);
+  }
+  56.666666666666664% {
+    clip: rect(58px, 9999px, 143px, 0);
+  }
+  60% {
+    clip: rect(86px, 9999px, 114px, 0);
+  }
+  63.33333333333333% {
+    clip: rect(61px, 9999px, 121px, 0);
+  }
+  66.66666666666666% {
+    clip: rect(127px, 9999px, 28px, 0);
+  }
+  70% {
+    clip: rect(81px, 9999px, 53px, 0);
+  }
+  73.33333333333333% {
+    clip: rect(124px, 9999px, 99px, 0);
+  }
+  76.66666666666667% {
+    clip: rect(34px, 9999px, 147px, 0);
+  }
+  80% {
+    clip: rect(61px, 9999px, 114px, 0);
+  }
+  83.33333333333334% {
+    clip: rect(131px, 9999px, 85px, 0);
+  }
+  86.66666666666667% {
+    clip: rect(36px, 9999px, 46px, 0);
+  }
+  90% {
+    clip: rect(28px, 9999px, 140px, 0);
+  }
+  93.33333333333333% {
+    clip: rect(94px, 9999px, 0px, 0);
+  }
+  96.66666666666667% {
+    clip: rect(109px, 9999px, 61px, 0);
+  }
+  100% {
+    clip: rect(113px, 9999px, 50px, 0);
+  }
+}
+@keyframes glitch-anim-2 {
+  6.666666666666667% {
+    clip: rect(86px, 9999px, 122px, 0);
+  }
+  10% {
+    clip: rect(95px, 9999px, 147px, 0);
+  }
+  13.333333333333334% {
+    clip: rect(96px, 9999px, 80px, 0);
+  }
+  16.666666666666664% {
+    clip: rect(149px, 9999px, 129px, 0);
+  }
+  20% {
+    clip: rect(41px, 9999px, 30px, 0);
+  }
+  23.333333333333332% {
+    clip: rect(80px, 9999px, 1px, 0);
+  }
+  26.666666666666668% {
+    clip: rect(26px, 9999px, 42px, 0);
+  }
+  30% {
+    clip: rect(99px, 9999px, 132px, 0);
+  }
+  33.33333333333333% {
+    clip: rect(6px, 9999px, 61px, 0);
+  }
+  36.666666666666664% {
+    clip: rect(83px, 9999px, 58px, 0);
+  }
+  40% {
+    clip: rect(87px, 9999px, 116px, 0);
+  }
+  43.333333333333336% {
+    clip: rect(119px, 9999px, 29px, 0);
+  }
+  46.666666666666664% {
+    clip: rect(41px, 9999px, 9px, 0);
+  }
+  50% {
+    clip: rect(121px, 9999px, 144px, 0);
+  }
+  53.333333333333336% {
+    clip: rect(12px, 9999px, 132px, 0);
+  }
+  56.666666666666664% {
+    clip: rect(58px, 9999px, 143px, 0);
+  }
+  60% {
+    clip: rect(86px, 9999px, 114px, 0);
+  }
+  63.33333333333333% {
+    clip: rect(61px, 9999px, 121px, 0);
+  }
+  66.66666666666666% {
+    clip: rect(127px, 9999px, 28px, 0);
+  }
+  70% {
+    clip: rect(81px, 9999px, 53px, 0);
+  }
+  73.33333333333333% {
+    clip: rect(124px, 9999px, 99px, 0);
+  }
+  76.66666666666667% {
+    clip: rect(34px, 9999px, 147px, 0);
+  }
+  80% {
+    clip: rect(61px, 9999px, 114px, 0);
+  }
+  83.33333333333334% {
+    clip: rect(131px, 9999px, 85px, 0);
+  }
+  86.66666666666667% {
+    clip: rect(36px, 9999px, 46px, 0);
+  }
+  90% {
+    clip: rect(28px, 9999px, 140px, 0);
+  }
+  93.33333333333333% {
+    clip: rect(94px, 9999px, 0px, 0);
+  }
+  96.66666666666667% {
+    clip: rect(109px, 9999px, 61px, 0);
+  }
+  100% {
+    clip: rect(113px, 9999px, 50px, 0);
+  }
+}
+.glitch-1 {
+
+  position: relative;
+  display: block;
+}
+.glitch-1::before {
+  content: attr(data-text);
+  position: absolute;
+
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  /* Creates an initial clip for our glitch. This works in
+  a typical top,right,bottom,left fashion and creates a mask
+  to only show a certain part of the glitch at a time. */
+  /* clip: rect(44px, 450px, 56px, 0); */
+  /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+  with an alternating animation to keep things fresh. */
+  animation: glitch-1-anim 5s infinite linear alternate-reverse;
+}
+.glitch-1::after {
+  content: attr(data-text);
+  position: absolute;
+
+  left: -2px;
+  text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+  animation: glitch-1-anim2 1s infinite linear alternate-reverse;
+}
+
+/* Creates an animation with 20 steaps. For each step, it calculates 
+a percentage for the specific step. It then generates a random clip
+box to be used for the random glitch effect. Also adds a very subtle
+skew to change the 'thickness' of the glitch.*/
+@keyframes glitch-1-anim {
+  0% {
+    clip: rect(51px, 9999px, 70px, 0);
+    transform: skew(0.38deg);
+  }
+  5% {
+    clip: rect(8px, 9999px, 31px, 0);
+    transform: skew(0.6deg);
+  }
+  10% {
+    clip: rect(13px, 9999px, 31px, 0);
+    transform: skew(0.73deg);
+  }
+  15% {
+    clip: rect(16px, 9999px, 99px, 0);
+    transform: skew(0.38deg);
+  }
+  20% {
+    clip: rect(7px, 9999px, 10px, 0);
+    transform: skew(0.03deg);
+  }
+  25% {
+    clip: rect(88px, 9999px, 72px, 0);
+    transform: skew(0.81deg);
+  }
+  30% {
+    clip: rect(67px, 9999px, 96px, 0);
+    transform: skew(0.36deg);
+  }
+  35% {
+    clip: rect(59px, 9999px, 69px, 0);
+    transform: skew(0.67deg);
+  }
+  40% {
+    clip: rect(82px, 9999px, 86px, 0);
+    transform: skew(0.48deg);
+  }
+  45% {
+    clip: rect(33px, 9999px, 85px, 0);
+    transform: skew(0.51deg);
+  }
+  50% {
+    clip: rect(79px, 9999px, 26px, 0);
+    transform: skew(0.99deg);
+  }
+  55% {
+    clip: rect(77px, 9999px, 77px, 0);
+    transform: skew(0.19deg);
+  }
+  60% {
+    clip: rect(30px, 9999px, 60px, 0);
+    transform: skew(0.07deg);
+  }
+  65% {
+    clip: rect(16px, 9999px, 54px, 0);
+    transform: skew(0.8deg);
+  }
+  70% {
+    clip: rect(39px, 9999px, 50px, 0);
+    transform: skew(0.27deg);
+  }
+  75% {
+    clip: rect(57px, 9999px, 98px, 0);
+    transform: skew(0.82deg);
+  }
+  80% {
+    clip: rect(42px, 9999px, 63px, 0);
+    transform: skew(0.04deg);
+  }
+  85% {
+    clip: rect(17px, 9999px, 45px, 0);
+    transform: skew(0.58deg);
+  }
+  90% {
+    clip: rect(43px, 9999px, 29px, 0);
+    transform: skew(0.9deg);
+  }
+  95% {
+    clip: rect(11px, 9999px, 84px, 0);
+    transform: skew(0.37deg);
+  }
+  100% {
+    clip: rect(17px, 9999px, 63px, 0);
+    transform: skew(0.4deg);
+  }
+}
+@-webkit-keyframes glitch-1-anim {
+  0% {
+    clip: rect(51px, 9999px, 70px, 0);
+    transform: skew(0.38deg);
+  }
+  5% {
+    clip: rect(8px, 9999px, 31px, 0);
+    transform: skew(0.6deg);
+  }
+  10% {
+    clip: rect(13px, 9999px, 31px, 0);
+    transform: skew(0.73deg);
+  }
+  15% {
+    clip: rect(16px, 9999px, 99px, 0);
+    transform: skew(0.38deg);
+  }
+  20% {
+    clip: rect(7px, 9999px, 10px, 0);
+    transform: skew(0.03deg);
+  }
+  25% {
+    clip: rect(88px, 9999px, 72px, 0);
+    transform: skew(0.81deg);
+  }
+  30% {
+    clip: rect(67px, 9999px, 96px, 0);
+    transform: skew(0.36deg);
+  }
+  35% {
+    clip: rect(59px, 9999px, 69px, 0);
+    transform: skew(0.67deg);
+  }
+  40% {
+    clip: rect(82px, 9999px, 86px, 0);
+    transform: skew(0.48deg);
+  }
+  45% {
+    clip: rect(33px, 9999px, 85px, 0);
+    transform: skew(0.51deg);
+  }
+  50% {
+    clip: rect(79px, 9999px, 26px, 0);
+    transform: skew(0.99deg);
+  }
+  55% {
+    clip: rect(77px, 9999px, 77px, 0);
+    transform: skew(0.19deg);
+  }
+  60% {
+    clip: rect(30px, 9999px, 60px, 0);
+    transform: skew(0.07deg);
+  }
+  65% {
+    clip: rect(16px, 9999px, 54px, 0);
+    transform: skew(0.8deg);
+  }
+  70% {
+    clip: rect(39px, 9999px, 50px, 0);
+    transform: skew(0.27deg);
+  }
+  75% {
+    clip: rect(57px, 9999px, 98px, 0);
+    transform: skew(0.82deg);
+  }
+  80% {
+    clip: rect(42px, 9999px, 63px, 0);
+    transform: skew(0.04deg);
+  }
+  85% {
+    clip: rect(17px, 9999px, 45px, 0);
+    transform: skew(0.58deg);
+  }
+  90% {
+    clip: rect(43px, 9999px, 29px, 0);
+    transform: skew(0.9deg);
+  }
+  95% {
+    clip: rect(11px, 9999px, 84px, 0);
+    transform: skew(0.37deg);
+  }
+  100% {
+    clip: rect(17px, 9999px, 63px, 0);
+    transform: skew(0.4deg);
+  }
+}
+@keyframes glitch-1-anim2 {
+  0% {
+    clip: rect(36px, 9999px, 63px, 0);
+    transform: skew(0.65deg);
+  }
+  5% {
+    clip: rect(83px, 9999px, 77px, 0);
+    transform: skew(0.8deg);
+  }
+  10% {
+    clip: rect(78px, 9999px, 94px, 0);
+    transform: skew(0.99deg);
+  }
+  15% {
+    clip: rect(79px, 9999px, 79px, 0);
+    transform: skew(0.01deg);
+  }
+  20% {
+    clip: rect(24px, 9999px, 13px, 0);
+    transform: skew(0.79deg);
+  }
+  25% {
+    clip: rect(53px, 9999px, 16px, 0);
+    transform: skew(0.69deg);
+  }
+  30% {
+    clip: rect(23px, 9999px, 91px, 0);
+    transform: skew(0.94deg);
+  }
+  35% {
+    clip: rect(88px, 9999px, 21px, 0);
+    transform: skew(0.63deg);
+  }
+  40% {
+    clip: rect(8px, 9999px, 80px, 0);
+    transform: skew(0.64deg);
+  }
+  45% {
+    clip: rect(97px, 9999px, 55px, 0);
+    transform: skew(0.83deg);
+  }
+  50% {
+    clip: rect(51px, 9999px, 94px, 0);
+    transform: skew(0.91deg);
+  }
+  55% {
+    clip: rect(6px, 9999px, 24px, 0);
+    transform: skew(0.8deg);
+  }
+  60% {
+    clip: rect(97px, 9999px, 25px, 0);
+    transform: skew(0.62deg);
+  }
+  65% {
+    clip: rect(28px, 9999px, 76px, 0);
+    transform: skew(0.68deg);
+  }
+  70% {
+    clip: rect(5px, 9999px, 48px, 0);
+    transform: skew(0.72deg);
+  }
+  75% {
+    clip: rect(48px, 9999px, 33px, 0);
+    transform: skew(0.95deg);
+  }
+  80% {
+    clip: rect(83px, 9999px, 83px, 0);
+    transform: skew(0.42deg);
+  }
+  85% {
+    clip: rect(51px, 9999px, 2px, 0);
+    transform: skew(0.36deg);
+  }
+  90% {
+    clip: rect(94px, 9999px, 3px, 0);
+    transform: skew(0.3deg);
+  }
+  95% {
+    clip: rect(4px, 9999px, 40px, 0);
+    transform: skew(0.98deg);
+  }
+  100% {
+    clip: rect(78px, 9999px, 28px, 0);
+    transform: skew(1deg);
+  }
+}
+@-webkit-keyframes glitch-1-anim2 {
+  0% {
+    clip: rect(36px, 9999px, 63px, 0);
+    transform: skew(0.65deg);
+  }
+  5% {
+    clip: rect(83px, 9999px, 77px, 0);
+    transform: skew(0.8deg);
+  }
+  10% {
+    clip: rect(78px, 9999px, 94px, 0);
+    transform: skew(0.99deg);
+  }
+  15% {
+    clip: rect(79px, 9999px, 79px, 0);
+    transform: skew(0.01deg);
+  }
+  20% {
+    clip: rect(24px, 9999px, 13px, 0);
+    transform: skew(0.79deg);
+  }
+  25% {
+    clip: rect(53px, 9999px, 16px, 0);
+    transform: skew(0.69deg);
+  }
+  30% {
+    clip: rect(23px, 9999px, 91px, 0);
+    transform: skew(0.94deg);
+  }
+  35% {
+    clip: rect(88px, 9999px, 21px, 0);
+    transform: skew(0.63deg);
+  }
+  40% {
+    clip: rect(8px, 9999px, 80px, 0);
+    transform: skew(0.64deg);
+  }
+  45% {
+    clip: rect(97px, 9999px, 55px, 0);
+    transform: skew(0.83deg);
+  }
+  50% {
+    clip: rect(51px, 9999px, 94px, 0);
+    transform: skew(0.91deg);
+  }
+  55% {
+    clip: rect(6px, 9999px, 24px, 0);
+    transform: skew(0.8deg);
+  }
+  60% {
+    clip: rect(97px, 9999px, 25px, 0);
+    transform: skew(0.62deg);
+  }
+  65% {
+    clip: rect(28px, 9999px, 76px, 0);
+    transform: skew(0.68deg);
+  }
+  70% {
+    clip: rect(5px, 9999px, 48px, 0);
+    transform: skew(0.72deg);
+  }
+  75% {
+    clip: rect(48px, 9999px, 33px, 0);
+    transform: skew(0.95deg);
+  }
+  80% {
+    clip: rect(83px, 9999px, 83px, 0);
+    transform: skew(0.42deg);
+  }
+  85% {
+    clip: rect(51px, 9999px, 2px, 0);
+    transform: skew(0.36deg);
+  }
+  90% {
+    clip: rect(94px, 9999px, 3px, 0);
+    transform: skew(0.3deg);
+  }
+  95% {
+    clip: rect(4px, 9999px, 40px, 0);
+    transform: skew(0.98deg);
+  }
+  100% {
+    clip: rect(78px, 9999px, 28px, 0);
+    transform: skew(1deg);
+  }
+}
+@keyframes glitch-1-skew {
+  0% {
+    transform: skew(2deg);
+  }
+  10% {
+    transform: skew(5deg);
+  }
+  20% {
+    transform: skew(4deg);
+  }
+  30% {
+    transform: skew(3deg);
+  }
+  40% {
+    transform: skew(5deg);
+  }
+  50% {
+    transform: skew(-2deg);
+  }
+  60% {
+    transform: skew(2deg);
+  }
+  70% {
+    transform: skew(0deg);
+  }
+  80% {
+    transform: skew(3deg);
+  }
+  90% {
+    transform: skew(-4deg);
+  }
+  100% {
+    transform: skew(5deg);
+  }
+}
+
+@-webkit-keyframes glitch-1-skew {
+  0% {
+    transform: skew(2deg);
+  }
+  10% {
+    transform: skew(5deg);
+  }
+  20% {
+    transform: skew(4deg);
+  }
+  30% {
+    transform: skew(3deg);
+  }
+  40% {
+    transform: skew(5deg);
+  }
+  50% {
+    transform: skew(-2deg);
+  }
+  60% {
+    transform: skew(2deg);
+  }
+  70% {
+    transform: skew(0deg);
+  }
+  80% {
+    transform: skew(3deg);
+  }
+  90% {
+    transform: skew(-4deg);
+  }
+  100% {
+    transform: skew(5deg);
+  }
+}
+
+
+.glitch-hover {
+ 
+  -webkit-transform: translate(-0%, -0%);
+          transform: translate(-0%, -0%);
+  margin: 0;
+  color: #fff;
+}
+.glitch-hover:before, .glitch-hover:after {
+  display: block;
+  content: attr(data-glitch-hover);
+  border: 1px solid transparent;
+    /* padding: .375rem .75rem; */
+    line-height: 1;
+    border-radius: .25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+}
+.glitch-hover:after {
+  color: #f0f;
+  z-index: -2;
+}
+.glitch-hover:before {
+  color: #0ff;
+  z-index: -1;
+}
+.glitch-hover:hover:before {
+  -webkit-animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+          animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+}
+.glitch-hover:hover:after {
+  animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+}
+
+@media only screen and (max-width: 400px) {
+  .glitch-hover {
+    font-size: 3em;
+  }
+}
+@-webkit-keyframes glitch-hover {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-1px, 1px);
+            transform: translate(-1px, 1px);
+  }
+  40% {
+    -webkit-transform: translate(-1px, -1px);
+            transform: translate(-1px, -1px);
+  }
+  60% {
+    -webkit-transform: translate(1px, 1px);
+            transform: translate(1px, 1px);
+  }
+  80% {
+    -webkit-transform: translate(1px, -1px);
+            transform: translate(1px, -1px);
+  }
+  to {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+@keyframes glitch-hover {
+  0% {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-1px, 1px);
+            transform: translate(-1px, 1px);
+  }
+  40% {
+    -webkit-transform: translate(-1px, -1px);
+            transform: translate(-1px, -1px);
+  }
+  60% {
+    -webkit-transform: translate(1px, 1px);
+            transform: translate(1px, 1px);
+  }
+  80% {
+    -webkit-transform: translate(1px, -1px);
+            transform: translate(1px, -1px);
+  }
+  to {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+.text {
+  position: relative;
+}
+.dud {
+  color: #757575;
+}
+ </style>
+ <body class="opening view-2D zoom-large data-close controls-close">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="mt-3 box">
+            <!-- <div id="start-text"><span><a class="text-danger">Brandobot Offline...</a></span></div> -->
+              <div id="chatbox" class="border border-primary" style="display: none">
+              
+              </div>
+          </div>
+          <div class="mt-3 form-group" id="textArea">
+            <div>
+              <!-- <div contenteditable="True" placeholder="What should I say?" id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none"> -->
+              <input id="textInput" class="form-control input-lg" type="text" name="msg" placeholder="Message..." style="display: none" />
+              <button class="btn btn-primary story-button" type="button" id="story-button" style="display: none" onClick="get_response()" aria-pressed="false">
+                BrandoBot Response
+              </button>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-4">
+      
+<!-- Intro Button -->
+        <div class="mt-3 card" id="card-col-3">
+            <div class="card-body" id="intro-button-card">
+                <h5 class="card-title text" id='clickBegin'>Click to begin...</h5>
+                        <button class="btn btn-primary" type="button" id="introButton" onClick="start_intro()" aria-pressed="false">
+                          Wake Up
+                        </button>
+                        <button class="btn btn-primary" type="button" id="planetButton" onClick="show_planets()" aria-pressed="false">
+                          Planets...
+                        </button>
+            </div>
+            <div class="card-body" id="brandobot-card" style="display: none; background-color: #edf2f9">
+              <h4 class="card-title glitch-hover" data-glitch-hover="BrandoBot" style="color:  #1979e7">BrandoBot</h4>
+                <ul class="list-group mb-3" id="brandobot-status">
+                  <li id="status1" class="list-group-item d-flex justify-content-between lh-condensed" style="display: none">
+                    <div>
+                      <h6 class="my-0">Status</h6>
+                      <small class="text-muted">Update: <a class="text-info">Unavailable</a></small>
+                    </div>
+                    <span class="text-success glitch" data-text="ONLINE">ONLINE</span>
+                  </li>
+                  <li id="status2" class="list-group-item d-flex justify-content-between lh-condensed" style="display: none">
+                    <div>
+                      <h6 class="my-0">Version Number</h6>
+                      <small class="text-muted">Build 74.4.19 </small>
+                    </div>
+                    <span class="text-muted"><a class="text-success">v74</a></span>
+                    
+                  </li>
+                  <li id="status3" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
+                    <div>
+                      <h6 class="my-0">Last Activation Date</h6>
+                      <small class="text-muted">Information: <a class="text-info">Unavailable</a> </small>
+                    </div>
+                    <span class="text-muted"><a class="text-danger">ERROR</a></span>
+                  </li>
+                  <li id="status4" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
+                    <div>
+                      <h6 class="my-0 glitch" data-text="System Capacity">System Capacity</h6>
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 48%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <span class="text-success"><a class="text-danger glitch" text-data="48%">48%</a></span>
+                  </li>
+                  <li id="status5" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
+                    <h6 class="my-0">Memory Core</h6>
+                    <span class="text-muted  glitch-1" data-text="Corrupted"><a class="text-danger">Corrupted</a></span>
+                  </li>
+                </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container planet-container opening view-2D zoom-large data-close controls-close" id="planet-container" style="display: none">
+      <div class="row">
+      <div id="data">
+        <a class="sun" title="sun" href="#sunspeed">Sun</a>
+        <a class="mercury" title="mercury" href="#mercuryspeed">Mercury</a>
+        <a class="station" title="station" href="#stationspeed">Station</a>
+        <a class="venus" title="venus" href="#venusspeed">Venus</a>
+        <a class="earth active" title="earth" href="#earthspeed">Earth</a>
+        <a class="mars" title="mars" href="#marsspeed">Mars</a>
+        <a class="jupiter" title="jupiter" href="#jupiterspeed">Jupiter</a>
+        <a class="saturn" title="saturn" href="#saturnspeed">Saturn</a>
+        <a class="uranus" title="uranus" href="#uranusspeed">Uranus</a>
+        <a class="neptune" title="neptune" href="#neptunespeed">Neptune</a>
+      </div>
+      <div id="controls">
+        <label class="set-view">
+          <input type="checkbox">
+        </label>
+        <label class="set-zoom">
+          <input type="checkbox">
+        </label>
+        <label>
+          <input type="radio" class="set-speed" name="scale" checked>
+          <span>Speed</span>
+        </label>
+        <label>
+          <input type="radio" class="set-size" name="scale">
+          <span>Size</span>
+        </label>
+        <label>
+          <input type="radio" class="set-distance" name="scale">
+          <span>Distance</span>
+        </label>
+      </div>
+      <div id="universe" class="scale-stretched">
+        <div id="galaxy">
+          <div id="solar-system" class="earth">
+            <div id="mercury" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Mercury</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <div id="station" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Station</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="venus" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Venus</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="earth" class="orbit">
+              <div class="pos">
+                <div class="orbit">
+                  <div class="pos">
+                    <div class="moon"></div>
+                  </div>
+                </div>
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Earth</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="mars" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Mars</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="jupiter" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Jupiter</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="saturn" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <div class="ring"></div>
+                  <dl class="infos">
+                    <dt>Saturn</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="uranus" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Uranus</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="neptune" class="orbit">
+              <div class="pos">
+                <div class="planet">
+                  <dl class="infos">
+                    <dt>Neptune</dt>
+                    <dd><span></span></dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div id="sun">
+              <dl class="infos">
+                <dt>Sun</dt>
+                <dd><span></span></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+      <script type="text/javascript">
+      if (typeof jQuery == 'undefined') { 
+        document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+      }
+      </script>
+    </div>
+
+    <script>
+
+            function show_planets() {
+              console.log("showing planets")
+              document.getElementById("planet-container").style.display='block'
+              var body = $("body"),
+              universe = $("#universe"),
+              solarsys = $("#solar-system");
+
+              var init = function() {
+                body.removeClass('view-2D opening').addClass("view-3D").delay(2000).queue(function() {
+                  $(this).removeClass('hide-UI').addClass("set-speed");
+                  $(this).dequeue();
+                });
+              };
+
+              var setView = function(view) { universe.removeClass().addClass(view); };
+
+              $("#toggle-data").click(function(e) {
+                body.toggleClass("data-open data-close");
+                e.preventDefault();
+              });
+
+              $("#toggle-controls").click(function(e) {
+                body.toggleClass("controls-open controls-close");
+                e.preventDefault();
+              });
+
+              $("#data a").click(function(e) {
+                var ref = $(this).attr("class");
+                solarsys.removeClass().addClass(ref);
+                $(this).parent().find('a').removeClass('active');
+                $(this).addClass('active');
+                e.preventDefault();
+              });
+
+              $(".set-view").click(function() { body.toggleClass("view-3D view-2D"); });
+              $(".set-zoom").click(function() { body.toggleClass("zoom-large zoom-close"); });
+              $(".set-speed").click(function() { setView("scale-stretched set-speed"); });
+              $(".set-size").click(function() { setView("scale-s set-size"); });
+              $(".set-distance").click(function() { setView("scale-d set-distance"); });
+
+              init();
+
+      };
+
+            function addElement(parentId, elementTag, elementId, html) {
+                // Adds an element to the document
+                var p = document.getElementById(parentId);
+                var newElement = document.createElement(elementTag);
+                newElement.setAttribute('id', elementId);
+                newElement.innerHTML = html;
+                p.appendChild(newElement);
+            }
+            var storyCounter = 0
+            function get_next_story_button() {
+                storyCounter++
+                $.get("/storyButton", {storyCounter: storyCounter}).done(function(data) {
+                  $("#story-button").html(data);
+
+                  setTimeout(
+                  function() 
+                  {
+                    
+                    $("#story-button").fadeIn(0);
+                    // var showInput = document.getElementById("textInput");
+                    // showInput.contentEditable = "true";
+                    // showInput.style.display = 'block';
+                  }, 500);
+                 
+                  
+                });
+
+
+            };
+            // PRIMARY FUNCTION TO GET RESPONSE FROM BOT
+
+            // TESTING SOMETHING HERE
+              var currentBotText = "BrandoBot? Are you there?"
+              
+              function start_intro() {
+                console.log("starting intro");
+                console.log("current bot text = " + currentBotText)
+                var theButton = document.getElementById("intro-button-card");
+                $('#card-col-3').fadeOut(100)
+                
+                $('#intro-button-card').fadeOut(100)
+                $('#start-text').fadeOut(500)
+                $('#card-col-3').delay(500).fadeIn(900)
+
+                document.getElementById("status3").style.display = 'none'
+                $("#brandobot-card").delay(1000).fadeIn(1500);
+                $("#status1").delay(1000).fadeIn(2000);
+                $("#status2").delay(1000).fadeIn(2500);
+                $("#status3").delay(1000).fadeIn(3000);
+                $("#status4").delay(1000).fadeIn(3500);
+                $("#status5").delay(1000).fadeIn(4000);
+                $("#chatbox").delay(4000).fadeIn(3000);
+                $("#story-button").delay(4500).fadeIn(2000);
+                // $("#brandobot-card").fadeIn(150);
+                // $("#status1").fadeIn(200);
+                // $("#status2").fadeIn(250);
+                // $("#status3").fadeIn(300);
+                // $("#status4").fadeIn(350);
+                // $("#status5").fadeIn(400);
+                // $("#chatbox").fadeIn(300);
+                // $("#story-button").delay(450).fadeIn(200);
+                // $("#textInput").delay(4500).fadeIn(4000);
+                //theButton.parentNode.removeChild(theButton);
+                var userHtml = '<div class="botBlock"><div class="botText"><span>' + currentBotText + "</span></div></div>";
+                setTimeout(
+                  function() 
+                  {
+                    
+                    $("#chatbox").append(userHtml);
+                    // var showInput = document.getElementById("textInput");
+                    // showInput.contentEditable = "true";
+                    // showInput.style.display = 'block';
+                  }, 0);
+                
+//                document.getElementById("brandobot-card").style.display = 'block';
+
+                
+              }
+
+              var introState = 0;
+              function get_response() {
+                $("#story-button").fadeOut(10);
+                // document.getElementById("story-button").hidden = true;
+                introState++;
+                if (introState > 20) {
+                $("#textInput").fadeIn(2500);
+              } else {
+                $.get("/intro", {introState: introState}).done(function(introData) {
+                    var userInput = document.getElementById('textInput');
+                    // var rawText = userInput.textContent;
+                    var rawText = "";
+                    // $('#textInput').html('');
+                    // document
+                    //     .getElementById("textInput")
+                    //     .scrollIntoView({ block: "end", behavior: "smooth"});
+
+                        document
+                        .getElementById("chatbox")
+                        .scrollIntoView({ block: "end", behavior: "smooth" });
+                    $.get("/prediction", { userText: rawText + " " + currentBotText, historyOn: 0, historyLength: 2, 
+                                            temperature: .4, top_k: 50, randomHistory: "random",
+                                            personalityType: 'None'}).done(function(data) {
+                        
+                        
+                        var userHtml = '<div class="userText"><span class="text" id="dataText-' + introState + '">' + data + "</span></div>";
+                        var dataLen = data.length;
+                        var storyLen = introData.length;
+                        var botHtml = '<div class="botBlock"><div class="botText"><span>' + introData + "</span></div></div>";
+                        var arr = [userHtml, botHtml];
+                        var count = 0;
+                        sleep(1000)
+                        $("#chatbox").append('<p class="box">' + userHtml + '</p>');
+                        var changeText = document.getElementById("dataText-"+introState).textContent
+                        console.log(changeText)
+                        const scrambled = () => {
+                              fx.setText(changeText)
+                            };
+
+                            
+                        $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+
+                          setTimeout(function() {
+                             
+                              $("#chatbox").append('<p class="box">' + botHtml + '</p>');
+                              $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+                              get_next_story_button()
+                              $("#story-button").delay(2000 + (storyLen * 15)).fadeIn(2000);
+                              $("#story-button").fadeIn(2000);
+                            }, 2000 + (dataLen * 50))
+                            // $("#story-button").fadeIn(200);
+                            // }, 2000)
+                          //$("#").append(botHtml); 
+                          //$("#chatbox").append(userHtml);
+                          //$('#textInput').html('');
+                          
+
+                    currentBotText = introData
+                    scrambled();
+                 });
+
+                });
+
+               }
+              }
+              function append_chats(data) {
+                console.log("appending data... " + data)
+                $("#chatbox").append(data)
+              }
+
+              // // INTRODUCTION FUNCTIONS
+              // var clicks = 0
+              // function start_intro() {
+              //   document.getElementById("introButton").disabled = true;
+              //   document.getElementById("clicks").innerHTML = clicks;
+              //   var introState = clicks;
+              //   $.get("/intro", {introState: introState}).done(function(data) {
+              //         var botHtml = '<div class="botBlock"><div class="botText"><span>' + data + "</span></div></div>";
+              //         $("#chatbox").append(botHtml);
+              //         $('#textInput').html('');
+
+              //         sleep(500);
+
+                        
+              //         document
+              //           .getElementById("textInput")
+              //           .scrollIntoView({ block: "end", behavior: "smooth"});
+
+              //           document
+              //           .getElementById("chatbox")
+              //           .scrollIntoView({ block: "end", behavior: "smooth" });
+                        
+
+              //           $.get("/prediction", { userText: data, historyOn: 0, historyLength: 0, 
+              //                           temperature: .4, top_k: 50, randomHistory: 'random',
+              //                           personalityType: 'None'}).done(function(data) {
+              //       var botHtml = '<div class="userText"><div class="userText"><span>' + data + "</span></div></div>";
+              //       $("#chatbox").append(botHtml);
+              //       sleep(1850);
+              //       $('#textInput').html('');
+
+              //       sleep(500);
+
+                      
+              //       document
+              //         .getElementById("textInput")
+              //         .scrollIntoView({ block: "end", behavior: "smooth"});
+
+              //         document
+              //         .getElementById("chatbox")
+              //         .scrollIntoView({ block: "end", behavior: "smooth" });
+
+              //    });
+
+              //     });
+              //   clicks += 1;
+              //   document.getElementById("introButton").disabled = false;
+               
+              // }
+               $(document).on("keypress", function (e) {
+                 if (e.which == 13) {
+                  getBotResponse();
+                 }
+               });
+               function sleep(miliseconds) {
+                  var currentTime = new Date().getTime();
+
+                  while (currentTime + miliseconds >= new Date().getTime()) {
+                  }
+                }
+                function getBotResponse() {
+                 var rawText = $("#textInput").val();
+                //  var userInput = document.getElementById('textInput');
+                 var userHtml = '<div class="userText"><span>' + rawText + "</span></div>";
+                 var historyLength = $("#historyLength").val();
+                 var temperature = $("#tempSetting").val();
+                 var top_k = $("#top_kSetting").val();
+                 $('#textInput').html('');
+                 console.log(rawText);
+                 $("#chatbox").append(userHtml);
+                 document
+                   .getElementById("chatbox")
+                   .scrollIntoView({ block: "end", behavior: "smooth" });
+                 document
+                   .getElementById("textInput")
+                   .scrollIntoView({ block: "end", behavior: "smooth"});
+
+
+                 //$.get("/testing", { msg: testing }).done(function(data) {console.log(data)});
+                 
+                 $.get("/prediction", { userText: rawText, historyOn: 0, historyLength: 2, 
+                                        temperature: .4, top_k: 50, randomHistory: "random",
+                                        personalityType: 'None'}).done(function(data) {
+                    var botHtml = '<div class="botBlock"><div class="botText"><span>' + data + "</span></div></div>";
+                    $("#chatbox").append(botHtml);
+                    $('#textInput').html('');
+
+                    sleep(500);
+
+                      
+                    document
+                      .getElementById("textInput")
+                      .scrollIntoView({ block: "end", behavior: "smooth"});
+
+                      document
+                      .getElementById("chatbox")
+                      .scrollIntoView({ block: "end", behavior: "smooth" });
+
+                 });
+
+               }
+
+// ——————————————————————————————————————————————————
+// TextScramble
+// ——————————————————————————————————————————————————
+
+class TextScramble {
+  constructor(el) {
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.update = this.update.bind(this);
+  }
+  setText(newText) {
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise(resolve => this.resolve = resolve);
+    this.queue = [];
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      this.queue.push({ from, to, start, end });
+    }
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+  update() {
+    let output = '';
+    let complete = 0;
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.randomChar();
+          this.queue[i].char = char;
+        }
+        output += `<span class="dud">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+    this.el.innerHTML = output;
+    if (complete === this.queue.length) {
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+  randomChar() {
+    return this.chars[Math.floor(Math.random() * this.chars.length)];
+  }}
+
+
+// ——————————————————————————————————————————————————
+// Example
+// ——————————————————————————————————————————————————
+
+phrases = document.getElementById("clickBegin").textContent
+
+const el = document.querySelector('.text');
+const fx = new TextScramble(el);
+
+let counter = 0;
+const next = () => {
+  fx.setText(phrases)
+};
+
+next();
+
+                              
+            </script>
+
+   </body>
+</html>
