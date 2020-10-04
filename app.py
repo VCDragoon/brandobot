@@ -139,18 +139,9 @@ model_size = "medium"
 tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 
 # Model Loads:
-if model_size == "small_custom":
-	model = GPT2LMHeadModel(gpt2_small_config)
-	model.load_state_dict(torch.load("custom/pytorch_model.bin"), strict=False)
-elif model_size == "medium":
-	model = GPT2LMHeadModel(gpt2_medium_config)
-	model.load_state_dict(torch.load("medium_ft.pkl"), strict=False)
-elif model_size == "large":
-	model = GPT2LMHeadModel(gpt2_large_config)
-	model.load_state_dict(torch.load("large_ft.pkl"), strict=False)
-elif model_size == "small":
-	model = GPT2LMHeadModel(gpt2_small_config)
-	model.load_state_dict(torch.load("small_ft.pkl"), strict=False)
+
+model = GPT2LMHeadModel(gpt2_medium_config)
+model.load_state_dict(torch.load("medium_ft.pkl"), strict=False)
 
 device = torch.device("cuda")
 model = model.to(device)
